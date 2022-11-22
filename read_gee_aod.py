@@ -66,14 +66,14 @@ def tif2info(path):
     return im_bands, im_lat, im_lon
 
 
-Dir = 'F:\\2_联合估算\\Source Data\\GEE_AOD2019'
+Dir = 'F:\\2_Joint_Estimation\\Source Data\\GEE_AOD2019'
 file = os.listdir(Dir)
 file = [f for f in file if f.endswith('01.tif')]
 file.sort(key=lambda x: int(x.split('.')[0][-5:-3]))
 fpath = [os.path.join(Dir, i) for i in file]
 
 ex_nc = [tif2nc(path=f, time=f.split('.')[0][-10:]) for f in fpath]
-[f.to_netcdf('gee-aod_'+f.time.data.astype(str)[0][:10]+'.nc') for f in ex_nc]
+# [f.to_netcdf('gee-aod_'+f.time.data.astype(str)[0][:10]+'.nc') for f in ex_nc]
 
 def plot():
     """
